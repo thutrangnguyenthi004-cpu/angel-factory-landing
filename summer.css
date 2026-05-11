@@ -786,10 +786,19 @@ section { position: relative; }
   letter-spacing: 0.02em;
 }
 @media (max-width: 1000px) {
-  .concepts-band { column-count: 2; }
+  .concepts-band {
+    column-count: unset;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .concept-tile { margin-bottom: 0; }
+  .concept-tile.r-9-16 { aspect-ratio: 3/4; }
+  .concept-tile .label-box .name { font-size: 24px; }
 }
-@media (max-width: 540px) {
-  .concepts-band { column-count: 2; }
+@media (max-width: 480px) {
+  .concept-tile .label-box { padding: 14px 14px 12px; }
+  .concept-tile .label-box .name { font-size: 20px; }
 }
 
 /* ============================================================
