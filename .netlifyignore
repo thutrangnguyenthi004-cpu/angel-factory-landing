@@ -1,0 +1,6 @@
+uploads/
+.git/
+.DS_Store
+._*
+*.swp
+node_modules/
