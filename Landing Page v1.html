@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Angel Factory · Beauty Tax-Free Album</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Caveat:wght@500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --page: #050505;
+    --card: #111111;
+    --footer: #080808;
+    --text: #f2f2f2;
+    --text-2: #e8e8e8;
+    --muted: #83837d;
+    --rule: rgba(255,255,255,0.18);
+    --rule-2: rgba(255,255,255,0.08);
+
+    /* Champagne accent — warm beauty-brand tone replacing the brief's industrial lime */
+    --accent: #ecd9a4;
+    --accent-strong: #f3e2b1;
+    --accent-hover: #d9c386;
+    --accent-ink: #1a1814;
+
+    --font-display: 'Instrument Serif', 'Times New Roman', serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-hand: 'Caveat', 'Instrument Serif', cursive;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, video { display: block; max-width: 100%; }
+
+  /* ---- Page shell ---- */
+  .page {
+    min-height: 100vh;
+    padding: 40px 16px;
+  }
+  .email {
+    max-width: 640px;
+    margin: 0 auto;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    border-radius: 4px;
+    overflow: hidden;
+    outline: 1px solid rgba(255,255,255,0.05);
+  }
+  .card { background: var(--card); color: var(--text); }
+
+  /* ---- Type ---- */
+  .display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+  .ital { font-style: italic; }
+  .eyebrow { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 600; }
+  .hand { font-family: var(--font-hand); font-size: 22px; color: var(--accent); }
+
+  /* ---- Hero ---- */
+  .hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 640 / 820;
+    overflow: hidden;
+  }
+  .hero video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(17,17,17,0.55) 0%,
+        rgba(17,17,17,0.10) 28%,
+        rgba(17,17,17,0.10) 50%,
+        rgba(17,17,17,0.55) 72%,
+        rgba(17,17,17,0.92) 90%,
+        rgba(17,17,17,1)    100%);
+  }
+  .hero-fg {
+    position: relative; z-index: 2;
+    height: 100%;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+    padding: 44px 28px 40px;
+  }
+  .brand-mark {
+    color: #ffffff;
+  }
+  .brand-mark .name {
+    font-family: var(--font-display);
+    font-size: 30px;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+  .brand-mark .sub {
+    font-size: 11px; letter-spacing: 0.32em; font-weight: 500;
+    margin-top: 8px; opacity: 0.92;
+  }
+  .hero-now {
+    margin-top: auto;
+    padding-top: 120px;
+    color: #ffffff;
+    font-size: 12px; letter-spacing: 0.32em; font-weight: 600;
+  }
+  .hero-headline {
+    margin: 14px 0 0;
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: 56px;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    max-width: 560px;
+  }
+  .hero-headline .accent-word {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-cta {
+    margin-top: 30px;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--accent-strong);
+    color: var(--accent-ink);
+    font-weight: 600; font-size: 15px;
+    border-radius: 999px;
+    padding: 16px 28px;
+    transition: transform 200ms ease, background 200ms ease;
+    border: 0;
+    cursor: pointer;
+  }
+  .hero-cta:hover { background: var(--accent-hover); transform: translateY(-2px); }
+  .arrow { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+  /* ---- Generic section helpers ---- */
+  .section { padding: 0; }
+  .pad-x { padding-left: 56px; padding-right: 56px; }
+  .pad-x-narrow { padding-left: 78px; padding-right: 78px; }
+  .pad-x-wide { padding-left: 42px; padding-right: 42px; }
+  .center { text-align: center; }
+  .lead {
+    font-size: 17px; line-height: 1.6;
+    color: var(--text-2);
+  }
+  .h-display {
+    font-family: var(--font-display);
+    font-size: 46px; line-height: 1.05; letter-spacing: -0.015em;
+    color: var(--text);
+    margin: 0;
+  }
+  .h-display .ital { color: var(--accent); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-weight: 700; font-size: 15px;
+    padding: 14px 24px;
+    border-radius: 10px;
+    transition: transform 200ms ease, background 200ms ease, color 200ms ease;
+    border: 0;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+  .btn-solid { background: #ffffff; color: var(--accent-ink); padding: 14px 32px; }
+  .btn-solid:hover { background: #e8e8e8; transform: translateY(-2px); }
+
+  .row-center { display: flex; justify-content: center; }
+
+  .divider { padding: 32px 0; display: flex; justify-content: center; }
+  .divider .rule { height: 1px; width: 96px; background: var(--rule); }
+
+  /* ---- Step rows ---- */
+  .steps { max-width: 489px; margin: 0 auto; }
+  .step { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 22px; }
+  .step:last-child { margin-bottom: 0; }
+  .step .num {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 12px;
+    margin-top: 4px;
+    font-family: var(--font-body);
+  }
+  .step .body {
+    font-size: 16px; line-height: 1.55; color: var(--text-2);
+  }
+  .step .body b { color: var(--text); font-weight: 600; }
+
+  /* ---- Video card ---- */
+  .video-card {
+    display: block;
+    overflow: hidden;
+    border-radius: 14px;
+    position: relative;
+    background: #000;
+  }
+  .video-card video {
+    width: 100%; height: 370px; object-fit: cover;
+    transition: transform 700ms ease;
+  }
+  .video-card:hover video { transform: scale(1.03); }
+  .video-card .badge {
+    position: absolute;
+    left: 16px; top: 16px;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 6px 10px; border-radius: 999px;
+    font-weight: 600;
+  }
+
+  /* ---- Tax list (replaces image grid for that section) ---- */
+  .tax-list { max-width: 520px; margin: 0 auto; }
+  .tax-row {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 18px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule-2);
+  }
+  .tax-row:last-child { border-bottom: 1px solid var(--rule-2); }
+  .tax-num {
+    font-family: var(--font-display);
+    font-size: 22px; color: var(--accent);
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .tax-name {
+    font-family: var(--font-display);
+    font-size: 24px; line-height: 1.1;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+  .tax-blurb {
+    font-size: 14px; line-height: 1.5; color: var(--muted);
+    margin: 0;
+  }
+
+  /* ---- Pricing block ---- */
+  .price-card {
+    background: #0a0a0a;
+    border: 1px solid var(--rule-2);
+    border-radius: 14px;
+    padding: 28px 28px 26px;
+    text-align: center;
+  }
+  .price-card .stack {
+    display: flex; flex-direction: column;
+    text-align: left;
+    margin: 18px 0 22px;
+    border-top: 1px solid var(--rule-2);
+  }
+  .price-card .row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule-2);
+    font-size: 14px;
+  }
+  .price-card .row .label { color: var(--text-2); padding-right: 12px; }
+  .price-card .row .val { color: var(--muted); text-decoration: line-through; font-variant-numeric: tabular-nums; }
+  .price-card .row.total .label { color: var(--text); font-weight: 600; }
+  .price-card .row.total .val { color: var(--text); text-decoration: line-through; font-weight: 600; }
+  .price-today {
+    font-family: var(--font-display);
+    font-size: 64px; line-height: 1; letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  .price-today small {
+    font-size: 18px; vertical-align: 18px; margin-right: 4px;
+    color: var(--accent);
+  }
+  .price-foot {
+    font-size: 13px; color: var(--muted); margin-top: 8px;
+  }
+
+  /* ---- Lime CTA card → champagne ---- */
+  .accent-card {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-radius: 14px;
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .accent-card h2 {
+    font-family: var(--font-display);
+    font-size: 52px; line-height: 1.02; letter-spacing: -0.02em;
+    color: var(--accent-ink);
+    margin: 0 0 12px;
+  }
+  .accent-card p {
+    font-size: 17px; line-height: 1.5;
+    color: var(--accent-ink);
+    opacity: 0.85;
+    margin: 0 auto 28px;
+    max-width: 380px;
+  }
+  .accent-card .btn-primary {
+    background: var(--accent-ink);
+    color: var(--accent);
+  }
+  .accent-card .btn-primary:hover { background: #000; }
+
+  /* ---- Footer ---- */
+  footer.site {
+    background: var(--footer);
+    color: #fff;
+    padding: 48px 40px 40px;
+    text-align: center;
+    border-top: 1px solid var(--rule-2);
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 30px; letter-spacing: -0.01em; color: #fff;
+    transition: color 200ms ease;
+    display: inline-block;
+    padding-bottom: 32px;
+  }
+  .wordmark:hover { color: var(--accent); }
+  .disclaimer {
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+    padding-bottom: 32px;
+    max-width: 440px; margin: 0 auto;
+  }
+  .socials {
+    display: flex; justify-content: center; gap: 14px;
+    padding-bottom: 22px;
+  }
+  .socials a {
+    width: 38px; height: 38px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff;
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+  .socials svg { width: 16px; height: 16px; }
+  .socials a:hover {
+    background: #fff; color: var(--accent-ink);
+    border-color: #fff;
+  }
+  .unsubscribe {
+    font-size: 11px; color: var(--muted); line-height: 1.6;
+    padding-bottom: 16px;
+    max-width: 440px; margin: 0 auto;
+  }
+  .legal-links {
+    font-size: 12px; padding-bottom: 14px;
+  }
+  .legal-links a:hover { text-decoration: underline; }
+  .legal-links .pipe { color: #6c6b66; padding: 0 6px; }
+  .copyright {
+    font-size: 12px; color: rgba(255,255,255,0.8);
+    transition: color 200ms ease;
+  }
+  .copyright:hover { color: #fff; }
+
+  /* ---- Small responsive tweaks ---- */
+  @media (max-width: 540px) {
+    .pad-x { padding-left: 28px; padding-right: 28px; }
+    .pad-x-narrow { padding-left: 28px; padding-right: 28px; }
+    .pad-x-wide { padding-left: 20px; padding-right: 20px; }
+    .h-display { font-size: 38px; }
+    .hero-headline { font-size: 44px; }
+    .hero-fg { padding: 36px 22px 32px; }
+    .accent-card h2 { font-size: 40px; }
+    .accent-card { padding: 44px 22px; }
+    footer.site { padding: 40px 24px 32px; }
+    .video-card video { height: 280px; }
+    .price-today { font-size: 52px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <article class="email">
+
+    <!-- ====================== HERO ====================== -->
+    <section class="card hero" data-screen-label="01 Hero">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-fg">
+        <div class="brand-mark">
+          <div class="name">Angel Factory</div>
+          <div class="sub">BEAUTY TAX-FREE ALBUM</div>
+        </div>
+
+        <div class="hero-now">NOW OPEN · 24-HOUR DELIVERY</div>
+
+        <h1 class="hero-headline">
+          Stop paying the<br />
+          <span class="accent-word">Beauty Tax</span> on every trip.
+        </h1>
+
+        <a href="#enroll" class="hero-cta">
+          Tell me the secret
+          <svg class="arrow" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====================== INTRO COPY ====================== -->
+    <section class="card section pad-x-narrow" style="padding-top:36px; padding-bottom:32px;" data-screen-label="02 Intro">
+      <p class="lead center" style="margin:0;">
+        You spent <b style="color:var(--text);">$3,500</b> on the trip. Five outfits, 200 shots, posing under 40&deg;C
+        sun. You came home with <i>five</i> keepers. Meanwhile the girls you've been saving on Pinterest
+        for months &mdash; same iPhone, same skin &mdash; their albums look like Vogue spreads.
+        They know one tool. Now you do too.
+      </p>
+      <div class="row-center" style="padding-top:28px;">
+        <a href="#enroll" class="btn btn-primary">
+          Show me the tool
+          <svg class="arrow" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="row-center" style="padding-top:14px;">
+        <span class="hand">keep reading, only 4 minutes &#10022;</span>
+      </div>
+    </section>
+
+    <div class="card divider"><div class="rule"></div></div>
+
+    <!-- ====================== TAXES ====================== -->
+    <section class="card section pad-x" style="padding-bottom:40px;" data-screen-label="03 Taxes">
+      <h2 class="h-display center" style="padding-bottom:10px;">
+        The 5 invisible taxes <span class="ital">every beautiful woman pays.</span>
+      </h2>
+      <p class="lead center" style="max-width:480px; margin:0 auto 28px;">
+        You've been paying these for years without anyone naming them. Combined: roughly
+        <b style="color:var(--text);">$6,000</b> on top of every trip.
+      </p>
+
+      <div class="tax-list">
+        <div class="tax-row">
+          <div class="tax-num">01</div>
+          <div>
+            <h3 class="tax-name">Time Tax</h3>
+            <p class="tax-blurb">Your trip becomes a photo session, not a vacation. 15 hours of posing per 5-day trip &mdash; for 5 OK photos.</p>
+          </div>
+        </div>
+        <div class="tax-row">
+          <div class="tax-num">02</div>
+          <div>
+            <h3 class="tax-name">Emotional Tax</h3>
+            <p class="tax-blurb">Every time you open the album, you gaslight yourself. The problem isn't you. Regular cameras just can't capture you.</p>
+          </div>
+        </div>
+        <div class="tax-row">
+          <div class="tax-num">03</div>
+          <div>
+            <h3 class="tax-name">Money Tax</h3>
+            <p class="tax-blurb">Outfits, makeup, gear, photographer &mdash; $2,200 to $5,800 per trip. Still not as good as Pinterest.</p>
+          </div>
+        </div>
+        <div class="tax-row">
+          <div class="tax-num">04</div>
+          <div>
+            <h3 class="tax-name">Comparison Tax</h3>
+            <p class="tax-blurb">You envy Pinterest girls without knowing their secret. She isn't prettier. She knows one tool you don't.</p>
+          </div>
+        </div>
+        <div class="tax-row">
+          <div class="tax-num">05</div>
+          <div>
+            <h3 class="tax-name">Conflict Tax</h3>
+            <p class="tax-blurb">Fighting with your boyfriend or friend over bad photos. Trips are for connection &mdash; not tension over one OK shot.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="card divider"><div class="rule"></div></div>
+
+    <!-- ====================== THE SECRET ====================== -->
+    <section class="card section" data-screen-label="04 The secret">
+      <div class="pad-x" style="padding-bottom:28px;">
+        <div class="eyebrow center" style="color:var(--accent); padding-bottom:14px;">The secret is</div>
+        <h2 class="h-display center">
+          Those Pinterest photos<br />
+          <span class="ital">are all AI.</span>
+        </h2>
+      </div>
+
+      <div class="pad-x-wide" style="padding-bottom:36px;">
+        <a href="#enroll" class="video-card">
+          <span class="badge">AI render &middot; Angel 01</span>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/hero.mp4" type="video/mp4" />
+          </video>
+        </a>
+      </div>
+
+      <div class="pad-x" style="padding-bottom:36px;">
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div class="body">Send us <b>20 old selfies</b> from your camera roll. No new shoot, no makeup, no posing.</div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div class="body">AI is trained on your real photos. The output is <b>you yourself</b> &mdash; in different settings.</div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div class="body">Pick from <b>10 concepts</b> &mdash; yacht, aurora, desert, vintage snow &mdash; or describe your own.</div>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <div class="body">Receive <b>50 photos in 24 hours</b>. 4K PNG, 4 crop ratios, no watermark, ready to post.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-center" style="padding-bottom:48px;">
+        <a href="#enroll" class="btn btn-solid">See Angel 01's album</a>
+      </div>
+    </section>
+
+    <div class="card divider"><div class="rule"></div></div>
+
+    <!-- ====================== ANGEL 01 — RESULT ====================== -->
+    <section class="card section" data-screen-label="05 Angel 01">
+      <div class="pad-x" style="padding-bottom:24px;">
+        <div class="eyebrow center" style="color:var(--accent); padding-bottom:14px;">Meet Angel 01</div>
+        <h2 class="h-display center">
+          One selfie in.<br />
+          <span class="ital">Nine concepts out.</span>
+        </h2>
+      </div>
+
+      <div class="pad-x-wide" style="padding-bottom:32px;">
+        <a href="#enroll" class="video-card">
+          <span class="badge">9 of 50 photos</span>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/hero.mp4" type="video/mp4" />
+          </video>
+        </a>
+      </div>
+
+      <div class="pad-x-narrow" style="padding-bottom:32px;">
+        <p class="lead center" style="margin:0;">
+          Same girl. Yacht. Villa pool. Aurora. Desert. Hokkaido snow. Tokyo caf&eacute;. Mykonos pool party.
+          No real trip. No photographer. Rendered in 24 hours, from 20 phone selfies. Viewers don't recognize
+          it as AI &mdash; because it's <b style="color:var(--text);">you</b>.
+        </p>
+      </div>
+
+      <div class="row-center" style="padding-bottom:48px;">
+        <a href="#enroll" class="btn btn-solid">I want my album</a>
+      </div>
+    </section>
+
+    <div class="card divider"><div class="rule"></div></div>
+
+    <!-- ====================== INVESTMENT ====================== -->
+    <section class="card section pad-x" style="padding-bottom:48px;" id="enroll" data-screen-label="06 Investment">
+      <div class="eyebrow center" style="color:var(--accent); padding-bottom:14px;">Investment</div>
+      <h2 class="h-display center" style="padding-bottom:24px;">
+        Total value $1,076.<br />
+        <span class="ital">Today you pay $99.</span>
+      </h2>
+
+      <div class="price-card">
+        <div class="stack">
+          <div class="row">
+            <span class="label">50 AI photos &times; 10 concepts</span>
+            <span class="val">$499</span>
+          </div>
+          <div class="row">
+            <span class="label">Custom concept &mdash; render anywhere</span>
+            <span class="val">$299</span>
+          </div>
+          <div class="row">
+            <span class="label">Express 24-hour delivery</span>
+            <span class="val">$79</span>
+          </div>
+          <div class="row">
+            <span class="label">Re-edits until you're happy</span>
+            <span class="val">$199</span>
+          </div>
+          <div class="row total">
+            <span class="label">Total value</span>
+            <span class="val">$1,076</span>
+          </div>
+        </div>
+        <div class="price-today"><small>$</small>99</div>
+        <div class="price-foot">Launch promo &middot; after this month $149</div>
+      </div>
+
+      <div class="row-center" style="padding-top:30px;">
+        <a href="#enroll" class="btn btn-primary">
+          Save $3,500 &mdash; right now
+          <svg class="arrow" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====================== ACCENT CTA CARD ====================== -->
+    <section class="card pad-x-wide" style="padding-bottom:56px;" data-screen-label="07 CTA">
+      <div class="accent-card">
+        <h2>Ready to stop paying<br />the Beauty Tax?</h2>
+        <p>20 old selfies. 24 hours. $99. Be the angel your album never was.</p>
+        <a href="#enroll" class="btn btn-primary">
+          No more taxes for me
+          <svg class="arrow" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer class="site" data-screen-label="08 Footer">
+      <a href="#" class="wordmark">Angel Factory</a>
+
+      <p class="disclaimer">
+        Angel Factory renders AI photographs from your own selfies. We are not affiliated with any
+        camera, phone, or social-media platform mentioned in our marketing.
+      </p>
+
+      <div class="row-center" style="padding-bottom:28px;">
+        <div style="height:1px; width:96px; background: var(--rule);"></div>
+      </div>
+
+      <div class="socials" aria-label="Social links">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.4 2.4 2 4 4.5 4.4"/></svg>
+        </a>
+        <a href="#" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M11 8.5c2.5-.5 5 .5 5 3 0 2-1.5 3.5-3 3.5-1.2 0-1.7-.8-1.5-1.7L12.5 10"/><path d="M10.5 21l1.5-7"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 9.5l4 2.5-4 2.5z" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>
+        </a>
+        <a href="#" aria-label="Spotify">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M7 10c3-1 7-1 10 1"/><path d="M7.5 13c2.5-.8 6-.5 8.5 1"/><path d="M8 16c2-.5 5-.3 7 1"/></svg>
+        </a>
+      </div>
+
+      <p class="unsubscribe">
+        If you no longer want to receive updates from Angel Factory, you can unsubscribe at any
+        time by clicking &ldquo;unsubscribe&rdquo; below.
+      </p>
+
+      <div class="legal-links">
+        <a href="#" class="hover-underline">Support</a>
+        <span class="pipe">|</span>
+        <a href="#" class="hover-underline">Privacy</a>
+        <span class="pipe">|</span>
+        <a href="#" class="hover-underline">Terms</a>
+        <span class="pipe">|</span>
+        <a href="#" class="hover-underline">Unsubscribe</a>
+      </div>
+
+      <a href="#" class="copyright">&copy;2026 Angel Factory &middot; Beauty Tax-Free Album &middot; Bali</a>
+
+      <div style="height:32px;"></div>
+    </footer>
+
+  </article>
+</div>
+
+<template id="__bundler_thumbnail" data-bg-color="#050505">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect x="320" y="100" width="560" height="600" rx="12" fill="#111111" stroke="#ecd9a4" stroke-opacity="0.25"/>
+    <text x="600" y="380" text-anchor="middle" font-family="Times New Roman, serif" font-size="78" fill="#ffffff" font-style="italic">Angel</text>
+    <text x="600" y="470" text-anchor="middle" font-family="Times New Roman, serif" font-size="78" fill="#ecd9a4" font-style="italic">Factory</text>
+    <rect x="500" y="540" width="200" height="44" rx="22" fill="#ecd9a4"/>
+    <text x="600" y="569" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#1a1814" font-weight="700">Enroll</text>
+  </svg>
+</template>
+
+</body>
+</html>

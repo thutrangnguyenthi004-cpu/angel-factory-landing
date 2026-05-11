@@ -1,0 +1,22 @@
+# Source files / work materials (private)
+uploads/
+
+# macOS
+.DS_Store
+._*
+
+# Editor
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Backup HTMLs (uncomment to exclude old versions)
+# Landing Page v1.html
+# Landing Page v2.html
